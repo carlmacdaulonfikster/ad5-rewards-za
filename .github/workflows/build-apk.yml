@@ -1,14 +1,16 @@
 
-name: Build Ad5 Android APK
+name: Build AD5 Android APK
 
 on:
   workflow_dispatch:
   push:
-    branches: [main]
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -28,17 +30,19 @@ jobs:
         uses: android-actions/setup-android@v4
 
       - name: Install SDK packages
-        run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
+        run: |
+          sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
-      
       - name: Extract project
-  run: unzip -q ad5_capacitor_ready_dual_mode.zip -d app
+        run: unzip -q ad5_capacitor_ready_dual_mode.zip -d app
 
       - name: Prepare Android
         working-directory: app
         run: |
           npm install
-          npx cap add android
+          if [ ! -d android ]; then
+            npx cap add android
+          fi
           npx cap sync android
           chmod +x android/gradlew
 
@@ -49,5 +53,5 @@ jobs:
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
-          name: Ad5-Rewards-ZA-APK
+          name: AD5-Rewards-ZA-APK
           path: app/android/app/build/outputs/apk/debug/app-debug.apk
