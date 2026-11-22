@@ -30,8 +30,11 @@ jobs:
       - name: Install SDK packages
         run: sdkmanager "platform-tools" "platforms;android-35" "build-tools;35.0.0"
 
+      
       - name: Extract project
-         run: unzip -q 'ad5_capacitor_ready (1).zip' -d app
+        run: unzip -q "ad5_capacitor_ready (1).zip" -d app
+
+      
 
       - name: Prepare Android
         working-directory: app
