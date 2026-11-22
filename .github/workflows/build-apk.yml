@@ -33,9 +33,6 @@ jobs:
       
       - name: Extract project
   run: unzip -q ad5_capacitor_ready_dual_mode.zip -d app
-        
-
-      
 
       - name: Prepare Android
         working-directory: app
