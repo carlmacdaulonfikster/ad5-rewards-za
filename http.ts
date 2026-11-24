@@ -1,0 +1,13 @@
+export const corsHeaders = {
+  'Access-Control-Allow-Origin': '*',
+  'Access-Control-Allow-Headers': 'authorization, apikey, content-type, x-ad5-signature',
+  'Access-Control-Allow-Methods': 'GET, POST, OPTIONS',
+};
+export function json(data: unknown, status = 200) {
+  return new Response(JSON.stringify(data), { status, headers: { ...corsHeaders, 'Content-Type': 'application/json' } });
+}
+export function env(name: string): string {
+  const value = Deno.env.get(name);
+  if (!value) throw new Error(`Missing server environment variable: ${name}`);
+  return value;
+}

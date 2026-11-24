@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#102c25"><link rel="manifest" href="manifest.json">
+<title>Ad5 Rewards ZA</title><link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<header><div class="logo">AD<span>5</span></div><div><small>REWARDS SOUTH AFRICA</small><h1>5 seconds.<br>One reward.</h1></div><div class="flag">🇿🇦</div></header>
+<section id="accountCard" class="card auth-card">
+  <div class="pill">AD5 ACCOUNT</div><h3>Your AD5 account</h3>
+  <p id="authStatus" aria-live="polite">Sign in or create an account to continue to AD5 Rewards ZA.</p>
+  <div id="authFields">
+    <label for="displayName">Display name (for new accounts)</label><input id="displayName" type="text" autocomplete="name" maxlength="80" placeholder="Your name">
+    <label for="authEmail">Email address</label><input id="authEmail" type="email" autocomplete="email" maxlength="254" placeholder="you@example.com">
+    <label for="authPassword">Password</label><input id="authPassword" type="password" autocomplete="current-password" minlength="8" placeholder="At least 8 characters">
+    <div class="auth-actions"><button id="signIn" class="primary" type="button">Sign in</button><button id="signUp" class="secondary" type="button">Create account</button></div>
+  </div>
+  <button id="signOut" class="secondary hidden" type="button">Sign out</button>
+</section>
+<main id="dashboard" class="hidden">
+<div class="mode-switch" role="group" aria-label="App mode">
+  <button id="demoMode" class="mode active" type="button">Demo testing</button>
+  <button id="realMode" class="mode" type="button">Real money</button>
+</div>
+<div id="modeNotice" class="notice demo-notice"><b>DEMO MODE</b><span>Test credits only. They have no cash value and cannot be withdrawn.</span></div>
+
+<div class="balance"><small id="topBalanceLabel">DEMO POINTS BALANCE</small><div><strong id="points">0</strong> <span id="pointsUnit">pts</span></div><p id="topBalanceNote">Points are simulated. No cash or rewards are payable in this demo.</p></div>
+<nav>
+<button class="active" data-page="home">Home</button>
+<button data-page="wallet">Wallet</button>
+<button data-page="rewards">Rewards</button>
+<button data-page="refer">Refer</button>
+</nav>
+<section id="home" class="page">
+<div id="demoEarnCard" class="card sponsor"><div class="pill">SPONSORED DEMO</div><h2>Watch a 5-second clip</h2><p>Test the experience. Points and sample Rand amounts are simulated only.</p><div class="video" id="video"><div class="play">▶</div><span id="timerLabel">5-second sponsor demo</span></div>
+<button id="watch" class="primary">Watch & earn 10 demo points</button><div class="tiny">No real advertiser is connected. This is a prototype.</div></div>
+<div id="realEarnCard" class="card hidden"><div class="pill">REAL REWARDS</div><h2>Earn eligible rewards</h2><p>Real rewards can only be credited after a verified sponsor event is confirmed by the AD5 server. This app currently has no live server or advertiser connection.</p><button class="secondary" disabled>Real earning not activated</button></div>
+<div class="stats"><div class="card"><small>VIEWS TODAY</small><strong id="views">0 / 10</strong></div><div class="card"><small>STREAK</small><strong>🔥 1 day</strong></div></div>
+<div class="card"><h3>How it works</h3><p id="howItWorks">Choose a sponsored clip → watch the countdown → collect demo points → explore rewards.</p></div>
+</section>
+<section id="wallet" class="page hidden">
+<div id="demoWallet">
+<div class="card wallet-hero"><div class="pill">SIMULATED WALLET · ZAR</div><small>DEMO AVAILABLE BALANCE</small><div class="money" id="walletAvailable">R0.00</div><p>This is a display-only demo balance, not money. No deposits, payments or withdrawals are connected.</p></div>
+<div class="wallet-grid"><div class="card"><small>PENDING</small><strong id="walletPending">R0.00</strong></div><div class="card"><small>TOTAL DEMO EARNED</small><strong id="walletTotal">R0.00</strong></div></div>
+<div class="card"><h3>Demo transaction history</h3><div id="transactions" class="transactions"><p class="empty">No demo activity yet. Complete a sample clip to see a test entry here.</p></div></div>
+<div class="card"><h3>Withdrawals</h3><p>Disabled in demo mode. Demo credits can never be converted into cash.</p><button class="secondary" disabled>Withdrawals unavailable in demo</button></div>
+</div>
+<div id="realWallet" class="hidden">
+<div class="card wallet-hero"><div class="pill real-pill">REAL WALLET · ZAR</div><small>VERIFIED CASH BALANCE</small><div class="money" id="realAvailable">R—</div><p id="realWalletMessage">Live wallet is not activated. No real balance is stored on this device.</p></div>
+<div class="wallet-grid"><div class="card"><small>PENDING</small><strong id="realPending">R—</strong></div><div class="card"><small>TOTAL PAID/AVAILABLE</small><strong id="realTotal">R—</strong></div></div>
+<div class="card"><h3>Real transaction history</h3><div id="realTransactions"><p class="empty">Connect a secure AD5 account to load server-verified transactions.</p></div></div>
+<div class="card"><h3>Withdrawals</h3><p id="withdrawMessage">Withdrawals are locked until identity checks, a verified server ledger and a South African payment provider are connected.</p><button class="secondary" disabled>Withdrawals not activated</button></div>
+<div class="notice warning-notice"><b>LIVE MODE NOT CONNECTED</b><span>This screen is prepared for real payments, but it does not accept deposits, create cash earnings or send withdrawals yet.</span></div>
+</div>
+</section>
+<section id="rewards" class="page hidden"><div class="card"><h2>Reward shop</h2><p id="rewardIntro">Demo points and sample Rand amounts cannot be redeemed. Real rewards will only appear after sponsor funding and server verification.</p><div class="reward"><div>🎁<b>Sample voucher</b><small>Illustrative only</small></div><span>1,000 pts</span></div><div class="reward"><div>📱<b>Airtime sample</b><small>Not available yet</small></div><span>2,500 pts</span></div></div></section>
+<section id="refer" class="page hidden"><div class="card"><h2>Invite friends</h2><p>Referral rewards are demo-only until accounts, referral fraud checks and a funded rewards budget are implemented.</p><div class="refcode">AD5-DEMO</div><button class="primary" id="copy">Copy demo code</button></div></section>
+</main>
+<footer>AD5 REWARDS • DUAL-MODE MVP • SOUTH AFRICA</footer>
+</div>
+<script src="config.js"></script><script type="module" src="app.bundle.js"></script>
+</body></html>
